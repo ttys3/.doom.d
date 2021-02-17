@@ -119,3 +119,14 @@
     (defun @-enable-rainbow-delimiters ()
       (rainbow-delimiters-mode t))
     (add-hook 'prog-mode-hook '@-enable-rainbow-delimiters)))
+
+(use-package! easy-hugo
+   :config
+(progn
+        (setq easy-hugo-basedir "~/repo/blog/ttys3.dev")
+        (setq easy-hugo-url "https://ttys3.dev")
+        (setq easy-hugo-previewtime "300")
+        (map! :leader
+              :desc "easy Hugo blog"
+              :nv "e h" #'easy-hugo)
+        ))

@@ -54,4 +54,7 @@
 (package! rainbow-mode)
 (package! rainbow-delimiters)
 
+;; https://github.com/masasam/emacs-easy-hugo
+(package! easy-hugo)
+
 ;;(package! systemtap :disable t)
