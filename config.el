@@ -82,8 +82,9 @@
 (setq lsp-intelephense-licence-key "TTYS3")
 )
 
-(after! magit
-(setq git-commit-fill-column 120))
+(after! neotree
+    (setq neo-vc-integration '(char face))
+)
 
 ;; enable responsive guides
 ;; responsive guides allow you to visualize not only the indentation itself, but your place in it.
