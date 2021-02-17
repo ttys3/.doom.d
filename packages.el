@@ -48,3 +48,10 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+
+
+(package! rainbow-mode)
+(package! rainbow-delimiters)
+
+;;(package! systemtap :disable t)
