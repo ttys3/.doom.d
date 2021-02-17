@@ -4,6 +4,21 @@
 ;; sync' after modifying this file!
 
 
+;; TERM=xterm-direct emacs -nw
+;; fixup 24bit color for tmux TERM=screen-256color
+;; seems not work, commnet out currently
+;; (add-to-list 'term-file-aliases
+;;     '("screen-256color" ."xterm-direct"))
+;; (add-to-list 'term-file-aliases
+;;     '("tmux-256color" ."xterm-direct"))
+;; (add-to-list 'term-file-aliases
+;;     '("xterm-256color" ."xterm-direct"))
+
+;; evil leader key
+(setq evil-snipe-override-evil-repeat-keys nil)
+(setq doom-leader-key ",")
+(setq doom-localleader-key ",")
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "荒野無燈"
@@ -25,10 +40,15 @@
  (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12 :weight 'semi-light)
        doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 13))
 
+(if (equal (display-pixel-width) 3840)
+   (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 28 :weight 'semi-light)
+       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 28)))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-material)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -55,3 +75,47 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! lsp-mode
+(setq lsp-log-io t)
+(setq lsp-auto-guess-root t)
+(setq lsp-intelephense-licence-key "TTYS3")
+)
+
+(after! magit
+(setq git-commit-fill-column 120))
+
+;; enable responsive guides
+;; responsive guides allow you to visualize not only the indentation itself, but your place in it.
+;; see https://github.com/DarthFennec/highlight-indent-guides/blob/master/README.md#responsive-guides
+;; can be nil (default) / top / stack
+(after! highlight-indent-guides
+  (setq highlight-indent-guides-responsive "top"))
+
+;; enable fill-column-indicator (since emacs 27.1) in prog mode
+;; see https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
+(add-hook 'prog-mode-hook (lambda ()
+        (setq fill-column 120)
+        (setq display-fill-column-indicator t)
+        (setq display-fill-column-indicator-column t)
+        ;; (display-fill-column-indicator-mode)
+        (global-display-fill-column-indicator-mode)
+))
+
+
+;; user packages config
+
+(use-package! rainbow-mode
+  :config
+  (progn
+    (defun @-enable-rainbow ()
+      (rainbow-mode t))
+    (add-hook 'prog-mode-hook '@-enable-rainbow)
+))
+
+(use-package! rainbow-delimiters
+  :config
+  (progn
+    (defun @-enable-rainbow-delimiters ()
+      (rainbow-delimiters-mode t))
+    (add-hook 'prog-mode-hook '@-enable-rainbow-delimiters)))
