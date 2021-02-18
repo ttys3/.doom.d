@@ -124,6 +124,16 @@
 (setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
 (setq lsp-enable-completion-at-point nil) ; complete use company-lsp instead of builtin complete-at-point
 
+;; disable some lsp clients packages for speedup
+;; List of the clients to be automatically required.
+;; see https://github.com/emacs-lsp/lsp-mode/blob/587c042044769862691ef8ca10b081ef8a3b6892/lsp-mode.el#L170
+(setq lsp-client-packages '(ccls lsp-bash lsp-clangd lsp-cmake
+         lsp-css lsp-dockerfile lsp-eslint lsp-go
+         lsp-javascript lsp-json
+         lsp-lua lsp-php
+         lsp-python-ms lsp-rust
+         lsp-vala lsp-vimscript lsp-xml
+         lsp-yaml lsp-sqls))
 ;; disable some lsp clients for speedup
 ; (setq lsp-disabled-clients '(jedi pyls))
 ;; https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json
