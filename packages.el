@@ -55,4 +55,6 @@
 ;; https://github.com/masasam/emacs-easy-hugo
 (package! easy-hugo)
 
+(package! benchmark-init)
+
 ;;(package! systemtap :disable t)
