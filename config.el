@@ -144,6 +144,8 @@
 
 ;; user packages config
 
+;; Colorize color names in buffers
+;; https://github.com/emacsmirror/rainbow-mode
 (use-package! rainbow-mode
   :config
   (progn
@@ -152,12 +154,10 @@
     (add-hook 'prog-mode-hook '@-enable-rainbow)
 ))
 
+;; https://github.com/Fanael/rainbow-delimiters
 (use-package! rainbow-delimiters
   :config
-  (progn
-    (defun @-enable-rainbow-delimiters ()
-      (rainbow-delimiters-mode t))
-    (add-hook 'prog-mode-hook '@-enable-rainbow-delimiters)))
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package! easy-hugo
    :config
