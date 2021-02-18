@@ -40,6 +40,11 @@
     (set-frame-position (selected-frame) a-left a-top)
     (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
 
+;; Use of the `window-system` variable as a boolean is deprecated. Instead,
+;; use `display-graphic-p' or any of the other `display-*-p'
+;; predicates which report frame's specific UI-related capabilities.
+;; see http://doc.endlessparentheses.com/Var/window-system.html
+;; and https://www.gnu.org/software/emacs/manual/html_node/elisp/Window-Systems.html#index-window_002dsystem
 (if (display-graphic-p)
    (funcall (lambda ()
         (setq frame-resize-pixelwise t)
