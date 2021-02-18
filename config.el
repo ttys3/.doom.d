@@ -114,11 +114,25 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; ----------------- doom bundled package config --------------------
+
 (after! lsp-mode
 (setq lsp-log-io t)
-(setq lsp-auto-guess-root t)
-(setq lsp-intelephense-licence-key "TTYS3")
-)
+(setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
+(setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
+(setq lsp-enable-completion-at-point nil) ; complete use company-lsp instead of builtin complete-at-point
+(setq lsp-intelephense-licence-key "TTYS3"))
+
+(after! lsp-ui
+  (setq lsp-ui-doc-max-height 13 ; recover default value, ref https://github.com/emacs-lsp/lsp-ui/blob/78e0a41c9b6b0a166c6c86d2541f310883d15b68/lsp-ui-doc.el#L106
+        lsp-ui-doc-max-width 150
+        ;; https://github.com/emacs-lsp/lsp-ui/blob/master/lsp-ui-doc.el
+        ;; doom author: lsp-ui-doc is redundant with and more invasive than `+lookup/documentation'
+        lsp-ui-doc-enable nil ; set to t to enable lsp ui doc
+        lsp-ui-doc-delay 0.3 ; default is 0.2
+        ;; lsp-ui-doc-position 'at-point ; on terminal seems forced to 'top
+        lsp-ui-sideline-show-code-actions t))
+
 
 (after! neotree
     (setq neo-vc-integration '(char face))
