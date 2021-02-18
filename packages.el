@@ -51,9 +51,7 @@
 
 
 
-(package! rainbow-mode)
-(package! rainbow-delimiters)
-
+;; --------------------------- user packages -----------------------------
 ;; https://github.com/masasam/emacs-easy-hugo
 (package! easy-hugo)
 

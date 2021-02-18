@@ -144,20 +144,11 @@
 
 ;; user packages config
 
-;; Colorize color names in buffers
-;; https://github.com/emacsmirror/rainbow-mode
-(use-package! rainbow-mode
-  :config
-  (progn
-    (defun @-enable-rainbow ()
-      (rainbow-mode t))
-    (add-hook 'prog-mode-hook '@-enable-rainbow)
-))
-
+;; recover max face count limit to 3 by doom emacs in core/core-ui.el
 ;; https://github.com/Fanael/rainbow-delimiters
-(use-package! rainbow-delimiters
-  :config
-    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+(after! rainbow-delimiters
+        (setq rainbow-delimiters-max-face-count 9)
+)
 
 (use-package! easy-hugo
    :config
@@ -168,4 +159,4 @@
         (map! :leader
               :desc "easy Hugo blog"
               :nv "e h" #'easy-hugo)
-        ))
+     ))
