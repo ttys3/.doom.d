@@ -22,11 +22,20 @@ go get -u github.com/mdempsky/gocode
 # https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/markdown/README.org#prerequisites
 npm install -g marked
 
+# Fedora
 # https://github.com/koalaman/shellcheck
 sudo dnf install -y ShellCheck
 
 # https://github.com/Andersbakken/rtags
 sudo dnf install -y rtags
+
+
+# Ubuntu
+sudo apt install --no-install-recommends -y shellcheck
+
+# use `--no-install-recommends` to avoid apt install recommended packages: 
+# emacs-bin-common emacs-common emacs-el dh-elpa-helper elpa-rtags emacs emacs-gtk
+sudo apt install --no-install-recommends -y rtags
 ```
 
 
