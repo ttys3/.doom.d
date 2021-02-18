@@ -145,9 +145,12 @@
 ;; user packages config
 
 ;; recover max face count limit to 3 by doom emacs in core/core-ui.el
+;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
 ;; https://github.com/Fanael/rainbow-delimiters
 (after! rainbow-delimiters
+(progn
         (setq rainbow-delimiters-max-face-count 9)
+        (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 )
 
 (use-package! easy-hugo
