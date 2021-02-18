@@ -33,9 +33,12 @@ sudo dnf install -y rtags
 # Ubuntu
 sudo apt install --no-install-recommends -y shellcheck
 
-# use `--no-install-recommends` to avoid apt install recommended packages: 
+# use `--no-install-recommends` to avoid apt install recommended packages:
 # emacs-bin-common emacs-common emacs-el dh-elpa-helper elpa-rtags emacs emacs-gtk
 sudo apt install --no-install-recommends -y rtags
+
+# https://github.com/MaskRay/ccls
+sudo apt install --no-install-recommends -y ccls
 ```
 
 
@@ -47,7 +50,7 @@ https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#mod
 https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#file-structure
 
 https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configel
-Use after! or use-package! to configure packages. 
+Use after! or use-package! to configure packages.
 
 **Doom Emacs does not use package.el** (the package manager built into Emacs). Instead, it uses its own declarative package manager built on top of straight.el.
 Packages are declared in packages.el files. You’ll find one in your DOOMDIR and in many of Doom’s modules. Read on to learn how to use this system to install your own packages.
