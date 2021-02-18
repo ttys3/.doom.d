@@ -95,6 +95,10 @@ Is Company different from Helm and Ivy ? https://www.reddit.com/r/emacs/comments
 
 how to profile Doom startup time ?  https://github.com/hlissner/doom-emacs/issues/4498
 
+```shell
+TERM=xterm-direct emacs -nw --debug-init main.go 
+```
+
 ## Troubleshoot
 
 Project root won't be guessed correctly https://github.com/hlissner/doom-emacs/issues/3024
