@@ -96,8 +96,13 @@ Is Company different from Helm and Ivy ? https://www.reddit.com/r/emacs/comments
 how to profile Doom startup time ?  https://github.com/hlissner/doom-emacs/issues/4498
 
 ```shell
-TERM=xterm-direct emacs -nw --debug-init main.go 
+TERM=xterm-direct emacs -nw --debug-init main.go
 ```
+
+A guide on disabling/enabling lsp-mode features https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+
+http://blog.binchen.org/posts/how-to-speed-up-lsp-mode/
+
 
 ## Troubleshoot
 
