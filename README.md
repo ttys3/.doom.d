@@ -56,3 +56,47 @@ Use after! or use-package! to configure packages.
 Packages are declared in packages.el files. You’ll find one in your DOOMDIR and in many of Doom’s modules. Read on to learn how to use this system to install your own packages.
 
 https://github.com/hlissner/doom-emacs#install
+
+
+https://github.com/hlissner/doom-emacs/blob/develop/init.example.el
+
+https://github.com/emacs-lsp/lsp-mode
+
+https://github.com/Emacs-lsp/lsp-ui
+
+https://emacs-lsp.github.io/lsp-ui/
+
+Ivy https://oremacs.com/swiper/
+
+## articles
+
+- Helm or Ivy ?
+
+https://archive.casouri.cat/note/2018/ivy-to-helm/index.html
+
+<https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E4%BB%8EHelm%E5%88%B0Ivy.org>
+
+<https://github.com/abo-abo/swiper/issues/3>
+
+- LSP
+
+https://phenix3443.github.io/notebook/emacs/modes/company-lsp.html
+
+<https://phenix3443.github.io/notebook/emacs/modes/lsp-mode.html>
+
+<https://phenix3443.github.io/notebook/emacs/modes/lsp-ui.html>
+
+## FAQ
+
+Is Company different from Helm and Ivy ? https://www.reddit.com/r/emacs/comments/6x7ph2/is_company_different_from_helm_and_ivy/
+
+
+## Peformance
+
+how to profile Doom startup time ?  https://github.com/hlissner/doom-emacs/issues/4498
+
+## Troubleshoot
+
+Project root won't be guessed correctly https://github.com/hlissner/doom-emacs/issues/3024
+
+lsp-auto-guess-root problem https://github.com/hlissner/doom-emacs/issues/1928
