@@ -116,8 +116,10 @@
 
 ;; ----------------- doom bundled package config --------------------
 
+;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 (after! lsp-mode
-(setq lsp-log-io t)
+(setq lsp-log-io nil) ; if set to true can cause a performance hit
+(setq lsp-print-performance t)
 (setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
 (setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
 (setq lsp-enable-completion-at-point nil) ; complete use company-lsp instead of builtin complete-at-point
