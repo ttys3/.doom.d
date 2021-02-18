@@ -22,6 +22,30 @@
 ;; xterm mouse support
 (xterm-mouse-mode t)
 
+(defun my/first-monitor-width ()
+(nth 3 (assq 'geometry (car (display-monitor-attributes-list))))
+)
+
+(defun my/first-monitor-height ()
+(nth 4 (assq 'geometry (car (display-monitor-attributes-list))))
+)
+
+;; Set initial frame size and position for GUI emacs
+(defun my/set-initial-frame ()
+  (let* ((base-factor 0.70)
+	(a-width (* (my/first-monitor-width) base-factor))
+        (a-height (* (my/first-monitor-height) base-factor))
+        (a-left (truncate (/ (- (my/first-monitor-width) a-width) 2)))
+	(a-top (truncate (/ (- (my/first-monitor-height) a-height) 2))))
+    (set-frame-position (selected-frame) a-left a-top)
+    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+
+(if (display-graphic-p)
+   (funcall (lambda ()
+        (setq frame-resize-pixelwise t)
+        (my/set-initial-frame)))
+)
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "荒野無燈"
