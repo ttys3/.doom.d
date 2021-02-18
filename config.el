@@ -19,6 +19,9 @@
 (setq doom-leader-key ",")
 (setq doom-localleader-key ",")
 
+;; xterm mouse support
+(xterm-mouse-mode t)
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "荒野無燈"
