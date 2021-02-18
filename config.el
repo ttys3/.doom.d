@@ -171,6 +171,10 @@
 
 ;; ----------------- user packages config ----------------------
 
+(use-package! evil-matchit
+    :config
+    (global-evil-matchit-mode 1))
+
 (use-package! easy-hugo
    :config
 (progn

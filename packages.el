@@ -52,6 +52,12 @@
 
 
 ;; --------------------------- user packages -----------------------------
+
+;; Press “%” to jump between matched tags in Emacs.
+;; For example, in HTML “<div>” and “</div>” are a pair of tags.
+;; https://github.com/redguardtoo/evil-matchit
+(package! evil-matchit)
+
 ;; https://github.com/masasam/emacs-easy-hugo
 (package! easy-hugo)
 
