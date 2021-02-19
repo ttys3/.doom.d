@@ -56,6 +56,10 @@
 ;; tabnine https://github.com/TommyX12/company-tabnine
 (package! company-tabnine)
 
+;; org mode headline bullets list '("◉" "○" "◈" "◇" "▣" "□")
+;; https://github.com/integral-dw/org-superstar-mode
+(package! org-superstar)
+
 ; (package! doom-themes :recipe (:repo "ttys3/emacs-doom-themes") :pin "fb8c767a94")
 
 ;; Press “%” to jump between matched tags in Emacs.

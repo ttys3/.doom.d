@@ -274,3 +274,7 @@
               :desc "easy Hugo blog"
               :nv "e h" #'easy-hugo)
      ))
+
+(use-package! org-superstar
+  :init
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
