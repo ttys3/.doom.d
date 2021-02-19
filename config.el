@@ -74,7 +74,7 @@
 
 ;; font size for GUI emacs, here the size 16 is equal to font size 12.0 under Linux
  (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'normal)
-       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 18))
+       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 15))
 
 ;; font size for GUI emacs on HiDPI screen
 ;; display-pixel-width can not handle multi monitor correctly
