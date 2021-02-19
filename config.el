@@ -116,6 +116,11 @@
 
 ;; ----------------- doom bundled package config --------------------
 
+;; decrease which-key delay
+(after! which-key
+   (setq which-key-idle-delay 0.1
+         which-key-idle-secondary-delay 0.01))
+
 ;; add global company-backend
 ;; https://github.com/hlissner/doom-emacs/issues/1269#issuecomment-473573906
 (after! company
