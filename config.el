@@ -127,7 +127,6 @@
 (setq lsp-print-performance t)
 (setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
 (setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
-(setq lsp-enable-completion-at-point nil) ; complete use company-lsp instead of builtin complete-at-point
 
 ;; disable some lsp clients packages for speedup
 ;; List of the clients to be automatically required.
