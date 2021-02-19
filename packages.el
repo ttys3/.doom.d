@@ -56,6 +56,8 @@
 ;; tabnine https://github.com/TommyX12/company-tabnine
 (package! company-tabnine)
 
+; (package! doom-themes :recipe (:repo "ttys3/emacs-doom-themes") :pin "fb8c767a94")
+
 ;; Press “%” to jump between matched tags in Emacs.
 ;; For example, in HTML “<div>” and “</div>” are a pair of tags.
 ;; https://github.com/redguardtoo/evil-matchit

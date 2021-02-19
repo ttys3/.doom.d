@@ -209,10 +209,23 @@
         ;; lsp-ui-doc-position 'at-point ; on terminal seems forced to 'top
         lsp-ui-sideline-show-code-actions t))
 
+(after! treemacs
+        ; (setq treemacs-no-png-images t)
+        ; (treemacs-load-theme "all-the-icons")
+        (treemacs-display-current-project-exclusively))
 
-(after! neotree
-    (setq neo-vc-integration '(char face))
-)
+; (after! treemacs-all-the-icons
+;         (treemacs-load-theme "all-the-icons"))
+
+(after! doom-themes
+        (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+              doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+        ;; Enable flashing mode-line on errors
+        (doom-themes-visual-bell-config)
+
+        (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+        (doom-themes-treemacs-config))
 
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
