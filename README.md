@@ -19,8 +19,14 @@ go get -u github.com/cweill/gotests/...
 go get -u github.com/motemen/gore/cmd/gore
 go get -u github.com/mdempsky/gocode
 
+# markdown
 # https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/markdown/README.org#prerequisites
 npm install -g marked
+
+# css
+# https://github.com/stylelint/stylelint
+# https://stylelint.io/user-guide/get-started
+npm i -g stylelint stylelint-config-standard
 
 # Fedora
 # https://github.com/koalaman/shellcheck
