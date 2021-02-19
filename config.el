@@ -116,6 +116,11 @@
 
 ;; ----------------- doom bundled package config --------------------
 
+;; add global company-backend
+;; https://github.com/hlissner/doom-emacs/issues/1269#issuecomment-473573906
+(after! company
+(setq company-backends '(company-tabnine company-capf)))
+
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 (after! lsp-mode
 (setq lsp-log-io nil) ; if set to true can cause a performance hit
