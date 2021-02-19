@@ -209,7 +209,9 @@
         ;; lsp-ui-doc-position 'at-point ; on terminal seems forced to 'top
         lsp-ui-sideline-show-code-actions t))
 
-(after! treemacs
+(use-package! treemacs
+    :config
+        (map! [f4] #'treemacs)
         ; (setq treemacs-no-png-images t)
         ; (treemacs-load-theme "all-the-icons")
         (treemacs-display-current-project-exclusively))
