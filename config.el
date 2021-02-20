@@ -134,6 +134,30 @@
    (setq which-key-idle-delay 0.1
          which-key-idle-secondary-delay 0.01))
 
+;; 2-char searching ala vim-sneak & vim-seek, for evil-mode
+;; https://github.com/hlissner/evil-snipe#customization
+(use-package! evil-snipe
+  :commands (evil-snipe-mode
+             evil-snipe-override-mode
+             evil-snipe-local-mode
+             evil-snipe-override-local-mode)
+  :after-call pre-command-hook
+  :init
+  (setq evil-snipe-smart-case t
+        evil-snipe-scope 'buffer ; doom default: line
+        evil-snipe-repeat-scope 'buffer ; doom default: whole-line
+        evil-snipe-char-fold t)
+  :config
+  (pushnew! evil-snipe-disabled-modes 'Info-mode 'calc-mode 'treemacs-mode)
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(after! magit
+  ;; It seems evil-snipe-override-mode causes problems in Magit buffers, to fix this:
+  ;; https://github.com/hlissner/evil-snipe#conflicts-with-other-plugins
+(add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode))
+
+
 ;; add global company-backend
 ;; https://github.com/hlissner/doom-emacs/issues/1269#issuecomment-473573906
 (after! company
