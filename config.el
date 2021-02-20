@@ -251,6 +251,8 @@
         ;; lsp-ui-doc-position 'at-point ; on terminal seems forced to 'top
         lsp-ui-sideline-show-code-actions t))
 
+;; @TODO fixup
+;; error in a Doom startup hook: +doom-dashboard-init-h, (error "Window is dedicated to ' *Treemacs-Scoped-Buffer-Perspsctive main*'")
 (use-package! treemacs
     :config
         (map! [f4] #'treemacs)
@@ -269,7 +271,9 @@
         (doom-themes-visual-bell-config)
 
         (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-        (doom-themes-treemacs-config))
+        (doom-themes-treemacs-config)
+        ;; Corrects (and improves) org-mode's native fontification.
+        (doom-themes-org-config))
 
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
