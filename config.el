@@ -171,6 +171,12 @@
 (setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
 (setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
 
+;; lua
+(setq lsp-clients-lua-language-server-install-dir "~/.local/share/lua-language-server/"; Default: ~/.emacs.d/.cache/lsp/lua-language-server/
+      lsp-clients-lua-language-server-bin "~/.local/share/lua-language-server/bin/Linux/lua-language-server"; Default: ~/.emacs.d/.cache/lsp/lua-language-server/bin/Linux/lua-language-server
+      lsp-clients-lua-language-server-main-location "~/.local/share/lua-language-server/main.lua"; Default: ~/.emacs.d/.cache/lsp/lua-language-server/main.lua
+        )
+
 ;; disable some lsp clients packages for speedup
 ;; List of the clients to be automatically required.
 ;; see https://github.com/emacs-lsp/lsp-mode/blob/587c042044769862691ef8ca10b081ef8a3b6892/lsp-mode.el#L170
