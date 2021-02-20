@@ -33,12 +33,10 @@
 ;; geometry: position of the top-left corner of the monitor’s screen and its size, in pixels, as `(x y width height)`
 ;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Multiple-Terminals.html#index-display_002dmonitor_002dattributes_002dlist
 (defun my/first-monitor-width ()
-(nth 3 (assq 'geometry (car (display-monitor-attributes-list))))
-)
+(nth 3 (assq 'geometry (car (display-monitor-attributes-list)))))
 
 (defun my/first-monitor-height ()
-(nth 4 (assq 'geometry (car (display-monitor-attributes-list))))
-)
+(nth 4 (assq 'geometry (car (display-monitor-attributes-list)))))
 
 ;; Set initial frame size and position for GUI emacs
 (defun my/set-initial-frame ()
@@ -58,8 +56,7 @@
 (if (display-graphic-p)
    (funcall (lambda ()
         (setq frame-resize-pixelwise t)
-        (my/set-initial-frame)))
-)
+        (my/set-initial-frame))))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
