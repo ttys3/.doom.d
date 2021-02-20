@@ -15,9 +15,16 @@
 ;;     '("xterm-256color" ."xterm-direct"))
 
 ;; evil leader key
-(setq evil-snipe-override-evil-repeat-keys nil)
-(setq doom-leader-key ",")
-(setq doom-localleader-key ",")
+;; the battole of lead key
+;; see https://www.reddit.com/r/vim/comments/1sdkg2/dae_use_spacebar_as_their_leader/
+;; https://www.slant.co/topics/7423/~which-key-works-best-as-vim-leader
+;; avoid "," conflicts with evil-snipe (evil-snipe-repeat-reverse)
+;; see https://github.com/hlissner/evil-snipe#default-keybindings
+;; and https://github.com/hlissner/doom-emacs/issues/4242
+;; (setq evil-snipe-override-evil-repeat-keys nil) ; not in an after! block, it needs to be set before the package loads
+;; use , (comma) as leader key
+;; (setq doom-leader-key ",")
+;; (setq doom-localleader-key ",")
 
 ;; xterm mouse support
 (xterm-mouse-mode t)
@@ -115,6 +122,12 @@
 ;; they are implemented.
 
 ;; ----------------- doom bundled package config --------------------
+
+(map!
+        :nv ",s" #'save-buffer ; save file
+        :nv ",q" #'save-buffers-kill-terminal ; save and quit
+        :nv ",x" #'evil-quit-all-with-error-code ; quit without saving
+        )
 
 ;; decrease which-key delay
 (after! which-key
