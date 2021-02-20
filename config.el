@@ -258,7 +258,8 @@
         (map! [f4] #'treemacs)
         ; (setq treemacs-no-png-images t)
         ; (treemacs-load-theme "all-the-icons")
-        (treemacs-display-current-project-exclusively))
+        ; (treemacs-display-current-project-exclusively)
+        )
 
 ; (after! treemacs-all-the-icons
 ;         (treemacs-load-theme "all-the-icons"))
