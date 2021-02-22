@@ -3,6 +3,32 @@ my doom emacs private config
 
 ## install
 
+please ref to <https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#install> for detailed guide
+
+### Doom Emacs installation
+
+```shell
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+```
+
+add below to your zshrc / bashrc:
+
+```shell
+# So we don't have to write ~/.emacs.d/bin/doom every time
+PATH="$HOME/.emacs.d/bin:$PATH"
+```
+
+### Private config install
+
+```shell
+mv ~/.doom.d{,.bak}
+git clone https://github.com/ttys3/.doom.d.git ~/.doom.d
+~/.emacs.d/bin/doom sync
+
+~/.emacs.d/bin/doom doctor
+```
+
 ### enable 24bit color under terminal
 
 add below to .zshrc
