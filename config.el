@@ -279,14 +279,17 @@
         (doom-themes-visual-bell-config)
 
         (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-        (doom-themes-neotree-config)
+        ;; (doom-themes-neotree-config)
         ;; (doom-themes-treemacs-config)
         ;; Corrects (and improves) org-mode's native fontification.
         (doom-themes-org-config))
 
 ;; https://github.com/sebastiencs/sidebar.el
-(after! neotree
-        (map! [f4] #'neotree-toggle))
+(map! [f4] #'neotree-toggle)
+
+(use-package! neotree
+  :config
+        (setq neo-theme 'icons))
 
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)

@@ -62,6 +62,10 @@
 
 ; (package! doom-themes :recipe (:repo "ttys3/emacs-doom-themes") :pin "fb8c767a94")
 
+(package! neotree :recipe (:repo "ttys3/emacs-neotree") :pin "8cf9b7e")
+
+(package! icons-in-terminal :recipe (:repo "seagle0128/icons-in-terminal.el"))
+
 ;; (package! sidebar
 ;;  :recipe (:host github :repo "sebastiencs/sidebar.el"))
 
