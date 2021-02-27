@@ -258,16 +258,15 @@
 
 ;; @TODO fixup
 ;; error in a Doom startup hook: +doom-dashboard-init-h, (error "Window is dedicated to ' *Treemacs-Scoped-Buffer-Perspsctive main*'")
-(use-package! treemacs
-    :config
-        (map! [f4] #'treemacs)
-        ; (setq treemacs-no-png-images t)
-        ; (treemacs-load-theme "all-the-icons")
-        ; (treemacs-display-current-project-exclusively)
-        )
+;; (use-package! treemacs
+;;     :config
+;;         (map! [f4] #'treemacs)
+;;         (treemacs-display-current-project-exclusively)
+;;         )
 
 ; (after! treemacs-all-the-icons
 ;         (treemacs-load-theme "all-the-icons"))
+
 
 (after! doom-themes
         (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -277,14 +276,18 @@
         (doom-themes-visual-bell-config)
 
         (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-        (doom-themes-treemacs-config)
+        (doom-themes-neotree-config)
+        ;; (doom-themes-treemacs-config)
         ;; Corrects (and improves) org-mode's native fontification.
         (doom-themes-org-config))
+
+;; https://github.com/sebastiencs/sidebar.el
+(after! neotree
+        (map! [f4] #'neotree-toggle))
 
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
 ;; https://github.com/Fanael/rainbow-delimiters
-
 (use-package! rainbow-delimiters
   :config
   (progn
