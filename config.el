@@ -121,10 +121,11 @@
 ;; ----------------- doom bundled package config --------------------
 
 (map!
-        :nv ",t" #'+vterm/toggle ; toggle vterm popup
-        :nv ",s" #'save-buffer ; save file
-        :nv ",q" #'save-buffers-kill-terminal ; save and quit
-        :nv ",x" #'evil-quit-all-with-error-code ; quit without saving
+        :leader
+        :nv "t" #'+vterm/toggle ; toggle vterm popup
+        :nv "s" #'save-buffer ; save file
+        :nv "q" #'save-buffers-kill-terminal ; save and quit
+        :nv "x" #'evil-quit-all-with-error-code ; quit without saving
         )
 
 ;; decrease which-key delay
