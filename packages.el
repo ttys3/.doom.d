@@ -64,6 +64,8 @@
 
 (package! neotree :recipe (:repo "ttys3/emacs-neotree") :pin "8cf9b7e")
 
+;; https://github.com/twlz0ne/nerd-icons.el
+;; (package! nerd-icons :recipe (:repo "twlz0ne/nerd-icons.el"))
 (package! icons-in-terminal :recipe (:repo "seagle0128/icons-in-terminal.el"))
 
 ;; (package! sidebar
