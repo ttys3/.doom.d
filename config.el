@@ -249,6 +249,18 @@
 
 (setq lsp-intelephense-licence-key "TTYS3"))
 
+; config cc module
+; +lsp Disables irony+rtags and replaces them with LSP (ccls by default). This requires the :tools lsp module.
+;; https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/cc/README.org
+(setq lsp-clients-clangd-args '("-j=3"
+                                "--background-index"
+                                "--clang-tidy"
+                                "--completion-style=detailed"
+                                "--header-insertion=never"
+                                "--header-insertion-decorators=0"))
+; This will both set your clangd flags and choose clangd as the default LSP server everywhere clangd can be used.
+(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
 (after! lsp-ui
   (setq lsp-ui-doc-max-height 13 ; recover default value, ref https://github.com/emacs-lsp/lsp-ui/blob/78e0a41c9b6b0a166c6c86d2541f310883d15b68/lsp-ui-doc.el#L106
         lsp-ui-doc-max-width 150
