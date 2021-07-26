@@ -324,7 +324,7 @@
 ;; enable fill-column-indicator (since emacs 27.1) in prog mode
 ;; see https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
 (add-hook 'prog-mode-hook (lambda ()
-        (setq fill-column 120)
+        (setq fill-column 160)
         (setq display-fill-column-indicator t)
         (setq display-fill-column-indicator-column t)
         ;; (display-fill-column-indicator-mode)
