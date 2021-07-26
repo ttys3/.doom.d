@@ -74,6 +74,124 @@ sudo apt install --no-install-recommends -y ccls
 ```
 
 
+## How to build emacs from source
+
+```shell
+git clone --depth 1 https://github.com/emacs-mirror/emacs.git
+
+
+# prepare depends
+apt install -y libjansson-dev
+apt install -y libmagickwand-6.q16-dev
+sudo apt install libotf-dev libxft-dev libgpm-dev
+
+# configure
+git clean -dxf  ## cleans up old files
+./autogen.sh
+
+./configure \
+--without-mailutils --without-pop \
+--enable-link-time-optimization \
+--with-x-toolkit=gtk3 \
+--with-xpm \
+--with-jpeg \
+--with-tiff \
+--with-gif \
+--with-png \
+--with-rsvg \
+--with-lcms2 \
+--with-libsystemd \
+--with-cairo \
+--with-xml2 \
+--with-imagemagick \
+--with-json \
+--with-xft \
+--with-harfbuzz \
+--with-libotf \
+--with-toolkit-scroll-bars \
+--with-gpm \
+--with-dbus \
+--with-gsettings \
+--with-selinux \
+--with-gnutls \
+--with-zlib \
+--with-modules \
+--with-threads \
+--with-file-notification=yes \
+--with-libgmp
+```
+
+example configure output:
+
+```shell
+Configured for 'x86_64-pc-linux-gnu'.
+
+  Where should the build process find the source code?    .
+  What compiler should emacs be built with?               gcc -g3 -O2 -flto=6 -ffat-lto-objects
+  Should Emacs use the GNU version of malloc?             no
+    (The GNU allocators don't work with this system configuration.)
+  Should Emacs use a relocating allocator for buffers?    no
+  Should Emacs use mmap(2) for buffer allocation?         no
+  What window system should Emacs use?                    x11
+  What toolkit should Emacs use?                          GTK3
+  Where do we find X Windows header files?                Standard dirs
+  Where do we find X Windows libraries?                   Standard dirs
+  Does Emacs use -lXaw3d?                                 no
+  Does Emacs use -lXpm?                                   yes
+  Does Emacs use -ljpeg?                                  yes
+  Does Emacs use -ltiff?                                  yes
+  Does Emacs use a gif library?                           yes -lgif
+  Does Emacs use a png library?                           yes -lpng16 -lz
+  Does Emacs use -lrsvg-2?                                yes
+  Does Emacs use cairo?                                   yes
+  Does Emacs use -llcms2?                                 yes
+  Does Emacs use imagemagick?                             yes
+  Does Emacs support sound?                               yes
+  Does Emacs use -lgpm?                                   yes
+  Does Emacs use -ldbus?                                  yes
+  Does Emacs use -lgconf?                                 no
+  Does Emacs use GSettings?                               yes
+  Does Emacs use a file notification library?             yes -lglibc (inotify)
+  Does Emacs use access control lists?                    yes -lacl
+  Does Emacs use -lselinux?                               yes
+  Does Emacs use -lgnutls?                                yes
+  Does Emacs use -lxml2?                                  yes
+  Does Emacs use -lfreetype?                              yes
+  Does Emacs use HarfBuzz?                                yes
+  Does Emacs use -lm17n-flt?                              no
+  Does Emacs use -lotf?                                   yes
+  Does Emacs use -lxft?                                   no
+  Does Emacs use -lsystemd?                               yes
+  Does Emacs use -ljansson?                               yes
+  Does Emacs use -lgmp?                                   yes
+  Does Emacs directly use zlib?                           yes
+  Does Emacs have dynamic modules support?                yes
+  Does Emacs use toolkit scroll bars?                     yes
+  Does Emacs support Xwidgets (requires gtk3)?            no
+  Does Emacs have threading support in lisp?              yes
+  Does Emacs support the portable dumper?                 yes
+  Does Emacs support legacy unexec dumping?               no
+  Which dumping strategy does Emacs use?                  pdumper
+```
+
+check and ensure that `Does Emacs use -ljansson?` is `yes`, this will help improve JSON encode/decode performance.
+
+support native json-serialize json-parse-string function for JSON serialization/deserialization
+
+you can also verify this after compile:
+
+```shell
+❯ readelf -d src/emacs | grep jansson
+ 0x0000000000000001 (NEEDED)             Shared library: [libjansson.so.4]
+```
+
+```shell
+# now build and install it
+#make bootstrap
+make -j14
+
+sudo make install
+```
 
 ## refs
 
