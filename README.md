@@ -45,6 +45,15 @@ go get -u github.com/cweill/gotests/...
 go get -u github.com/motemen/gore/cmd/gore
 go get -u github.com/mdempsky/gocode
 
+# css lint https://stylelint.io/user-guide/get-started
+npm i -g stylelint stylelint-config-standard
+
+# html https://github.com/htacg/tidy-html5
+sudo apt install tidy
+
+# js-beautify https://github.com/beautify-web/js-beautify
+npm -g install js-beautify
+
 # markdown
 # https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/markdown/README.org#prerequisites
 npm install -g marked
@@ -239,6 +248,13 @@ https://phenix3443.github.io/notebook/emacs/modes/company-lsp.html
 ## FAQ
 
 Is Company different from Helm and Ivy ? https://www.reddit.com/r/emacs/comments/6x7ph2/is_company_different_from_helm_and_ivy/
+
+true color:  https://github.com/hlissner/doom-emacs/blob/develop/modules/os/tty/README.org#true-color-and-italic-support
+
+https://gist.github.com/XVilka/8346728
+
+Update TERMINFO capabilities for 24-bit color support in emacs. #1141
+https://github.com/kovidgoyal/kitty/issues/1141
 
 
 ## Peformance
