@@ -26,6 +26,9 @@
 ;; (setq doom-leader-key ",")
 ;; (setq doom-localleader-key ",")
 
+;; https://github.com/doomemacs/doomemacs/issues/2688#issuecomment-596684817
+(setq confirm-kill-emacs nil)
+
 ;; xterm mouse support
 (xterm-mouse-mode t)
 
