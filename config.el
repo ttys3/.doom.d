@@ -32,6 +32,7 @@
 
 ;; credit: yorickvP on Github
 ;; https://www.emacswiki.org/emacs/CopyAndPaste
+(when (getenv "WAYLAND_DISPLAY")
 (setq wl-copy-process nil)
 (defun wl-copy (text)
 (setq wl-copy-process (make-process :name "wl-copy"
@@ -45,7 +46,7 @@
     nil ; should return nil if we're the current paste owner
     (shell-command-to-string "wl-paste -n | tr -d \r")))
 (setq interprogram-cut-function 'wl-copy)
-(setq interprogram-paste-function 'wl-paste)
+(setq interprogram-paste-function 'wl-paste))
 
 ;; func for calc first monitor width
 ;; geometry: position of the top-left corner of the monitor’s screen and its size, in pixels, as `(x y width height)`
