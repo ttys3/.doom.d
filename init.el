@@ -32,9 +32,9 @@
 ;;       ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 ;;       ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
-(when doom-debug-p
-  (require 'benchmark-init)
-  (add-hook 'doom-first-input-hook #'benchmark-init/deactivate))
+;; (when doom-debug-p
+;;   (require 'benchmark-init)
+;;   (add-hook 'doom-first-input-hook #'benchmark-init/deactivate))
 
 (doom! :input
        ;;chinese
