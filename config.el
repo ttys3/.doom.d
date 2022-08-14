@@ -32,6 +32,7 @@
 
 ;; credit: yorickvP on Github
 ;; https://www.emacswiki.org/emacs/CopyAndPaste
+;; pacman -S wl-clipboard
 (when (getenv "WAYLAND_DISPLAY")
   (setq wl-copy-process nil)
   (defun wl-copy (text)
