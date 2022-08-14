@@ -33,37 +33,37 @@
 ;; credit: yorickvP on Github
 ;; https://www.emacswiki.org/emacs/CopyAndPaste
 (when (getenv "WAYLAND_DISPLAY")
-(setq wl-copy-process nil)
-(defun wl-copy (text)
-(setq wl-copy-process (make-process :name "wl-copy"
-                                    :buffer nil
-                                    :command '("wl-copy" "-f" "-n")
-                                    :connection-type 'pipe))
-(process-send-string wl-copy-process text)
-(process-send-eof wl-copy-process))
-(defun wl-paste ()
-(if (and wl-copy-process (process-live-p wl-copy-process))
-    nil ; should return nil if we're the current paste owner
-    (shell-command-to-string "wl-paste -n | tr -d \r")))
-(setq interprogram-cut-function 'wl-copy)
-(setq interprogram-paste-function 'wl-paste))
+  (setq wl-copy-process nil)
+  (defun wl-copy (text)
+    (setq wl-copy-process (make-process :name "wl-copy"
+                                        :buffer nil
+                                        :command '("wl-copy" "-f" "-n")
+                                        :connection-type 'pipe))
+    (process-send-string wl-copy-process text)
+    (process-send-eof wl-copy-process))
+  (defun wl-paste ()
+    (if (and wl-copy-process (process-live-p wl-copy-process))
+        nil ; should return nil if we're the current paste owner
+      (shell-command-to-string "wl-paste -n | tr -d \r")))
+  (setq interprogram-cut-function 'wl-copy)
+  (setq interprogram-paste-function 'wl-paste))
 
 ;; func for calc first monitor width
 ;; geometry: position of the top-left corner of the monitor’s screen and its size, in pixels, as `(x y width height)`
 ;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Multiple-Terminals.html#index-display_002dmonitor_002dattributes_002dlist
 (defun my/first-monitor-width ()
-(nth 3 (assq 'geometry (car (display-monitor-attributes-list)))))
+  (nth 3 (assq 'geometry (car (display-monitor-attributes-list)))))
 
 (defun my/first-monitor-height ()
-(nth 4 (assq 'geometry (car (display-monitor-attributes-list)))))
+  (nth 4 (assq 'geometry (car (display-monitor-attributes-list)))))
 
 ;; Set initial frame size and position for GUI emacs
 (defun my/set-initial-frame ()
   (let* ((base-factor 0.70)
-	(a-width (* (my/first-monitor-width) base-factor))
-        (a-height (* (my/first-monitor-height) base-factor))
-        (a-left (truncate (/ (- (my/first-monitor-width) a-width) 2)))
-	(a-top (truncate (/ (- (my/first-monitor-height) a-height) 2))))
+	 (a-width (* (my/first-monitor-width) base-factor))
+         (a-height (* (my/first-monitor-height) base-factor))
+         (a-left (truncate (/ (- (my/first-monitor-width) a-width) 2)))
+	 (a-top (truncate (/ (- (my/first-monitor-height) a-height) 2))))
     (set-frame-position (selected-frame) a-left a-top)
     (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
 
@@ -73,9 +73,9 @@
 ;; see http://doc.endlessparentheses.com/Var/window-system.html
 ;; and https://www.gnu.org/software/emacs/manual/html_node/elisp/Window-Systems.html#index-window_002dsystem
 (if (display-graphic-p)
-   (funcall (lambda ()
-        (setq frame-resize-pixelwise t)
-        (my/set-initial-frame))))
+    (funcall (lambda ()
+               (setq frame-resize-pixelwise t)
+               (my/set-initial-frame))))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -96,14 +96,14 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; font size for GUI emacs, here the size 16 is equal to font size 12.0 under Linux
- (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'normal)
-       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 15))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'normal)
+      doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 15))
 
 ;; font size for GUI emacs on HiDPI screen
 ;; display-pixel-width can not handle multi monitor correctly
 (if (and (display-graphic-p) (>= (my/first-monitor-width) 3840))
-   (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 28 :weight 'normal)
-       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 28)))
+    (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 28 :weight 'normal)
+          doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 28)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -140,17 +140,17 @@
 ;; ----------------- doom bundled package config --------------------
 
 (map!
-        :leader
-        :nv "t" #'+vterm/toggle ; toggle vterm popup
-        :nv "s" #'save-buffer ; save file
-        :nv "q" #'save-buffers-kill-terminal ; save and quit
-        :nv "x" #'evil-quit-all-with-error-code ; quit without saving
-        )
+ :leader
+ :nv "t" #'+vterm/toggle ; toggle vterm popup
+ :nv "s" #'save-buffer ; save file
+ :nv "q" #'save-buffers-kill-terminal ; save and quit
+ :nv "x" #'evil-quit-all-with-error-code ; quit without saving
+ )
 
 ;; decrease which-key delay
 (after! which-key
-   (setq which-key-idle-delay 0.1
-         which-key-idle-secondary-delay 0.01))
+  (setq which-key-idle-delay 0.1
+        which-key-idle-secondary-delay 0.01))
 
 ;; 2-char searching ala vim-sneak & vim-seek, for evil-mode
 ;; https://github.com/hlissner/evil-snipe#customization
@@ -173,24 +173,24 @@
 (after! magit
   ;; It seems evil-snipe-override-mode causes problems in Magit buffers, to fix this:
   ;; https://github.com/hlissner/evil-snipe#conflicts-with-other-plugins
-(add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode))
+  (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode))
 
 
 ;; add global company-backend
 ;; https://github.com/hlissner/doom-emacs/issues/1269#issuecomment-473573906
 (after! company
-(setq company-backends '(company-tabnine company-capf)))
+  (setq company-backends '(company-tabnine company-capf)))
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 (after! lsp-mode
-(setq lsp-log-io nil) ; if set to true can cause a performance hit
-(setq lsp-print-performance t)
-(setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
-(setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
+  (setq lsp-log-io nil) ; if set to true can cause a performance hit
+  (setq lsp-print-performance t)
+  (setq lsp-auto-guess-root t) ; auto detect workspace and start lang server
+  (setq lsp-eldoc-render-all t) ; display all of the info returned by document/onHover on bottom, only the symbol if nil.
 
-;; lua
-;; https://emacs-lsp.github.io/lsp-mode/page/lsp-lua-language-server/
-(setq lsp-clients-lua-language-server-install-dir (f-join (getenv "HOME") ".local/share/lua-language-server/"); Default: ~/.emacs.d/.cache/lsp/lua-language-server/
+  ;; lua
+  ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-lua-language-server/
+  (setq lsp-clients-lua-language-server-install-dir (f-join (getenv "HOME") ".local/share/lua-language-server/"); Default: ~/.emacs.d/.cache/lsp/lua-language-server/
         lsp-clients-lua-language-server-bin (f-join lsp-clients-lua-language-server-install-dir "bin/Linux/lua-language-server")
         lsp-clients-lua-language-server-main-location (f-join lsp-clients-lua-language-server-install-dir "main.lua")
         lsp-lua-workspace-max-preload 2048 ; Default: 300, Max preloaded files
@@ -198,10 +198,10 @@
         )
 
 
-(setq lsp-intelephense-licence-key "TTYS3"))
+  (setq lsp-intelephense-licence-key "TTYS3"))
 
-; config cc module
-; +lsp Disables irony+rtags and replaces them with LSP (ccls by default). This requires the :tools lsp module.
+                                        ; config cc module
+                                        ; +lsp Disables irony+rtags and replaces them with LSP (ccls by default). This requires the :tools lsp module.
 ;; https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/cc/README.org
 (setq lsp-clients-clangd-args '("-j=3"
                                 "--background-index"
@@ -209,7 +209,7 @@
                                 "--completion-style=detailed"
                                 "--header-insertion=never"
                                 "--header-insertion-decorators=0"))
-; This will both set your clangd flags and choose clangd as the default LSP server everywhere clangd can be used.
+                                        ; This will both set your clangd flags and choose clangd as the default LSP server everywhere clangd can be used.
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 
 (after! lsp-ui
@@ -230,29 +230,29 @@
 ;;         (treemacs-display-current-project-exclusively)
 ;;         )
 
-; (after! treemacs-all-the-icons
-;         (treemacs-load-theme "all-the-icons"))
+                                        ; (after! treemacs-all-the-icons
+                                        ;         (treemacs-load-theme "all-the-icons"))
 
 
 (after! doom-themes
-        (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-              doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-        ;; Enable flashing mode-line on errors
-        (doom-themes-visual-bell-config)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
 
-        (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-        ;; (doom-themes-neotree-config)
-        ;; (doom-themes-treemacs-config)
-        ;; Corrects (and improves) org-mode's native fontification.
-        (doom-themes-org-config))
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  ;; (doom-themes-neotree-config)
+  ;; (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;; https://github.com/sebastiencs/sidebar.el
 (map! [f4] #'neotree-toggle)
 
 (use-package! neotree
   :config
-        (setq neo-theme 'icons))
+  (setq neo-theme 'icons))
 
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
@@ -275,47 +275,47 @@
 ;; enable fill-column-indicator (since emacs 27.1) in prog mode
 ;; see https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
 (add-hook 'prog-mode-hook (lambda ()
-        (setq fill-column 160)
-        (setq display-fill-column-indicator t)
-        (setq display-fill-column-indicator-column t)
-        ;; (display-fill-column-indicator-mode)
-        (global-display-fill-column-indicator-mode)
+                            (setq fill-column 160)
+                            (setq display-fill-column-indicator t)
+                            (setq display-fill-column-indicator-column t)
+                            ;; (display-fill-column-indicator-mode)
+                            (global-display-fill-column-indicator-mode)
 
 
-(defun eglot-rename (newname)
-  "Rename the current symbol to NEWNAME."
-  (interactive
-   (list (read-from-minibuffer
-          (format "Rename `%s' to: " (or (thing-at-point 'symbol t) "unknown symbol"))
-          (thing-at-point 'symbol t) nil nil nil
-          (symbol-name (symbol-at-point)))))
-  (unless (eglot--server-capable :renameProvider)
-    (eglot--error "Server can't rename!"))
-  (eglot--apply-workspace-edit
-   (jsonrpc-request (eglot--current-server-or-lose)
-                    :textDocument/rename `(,@(eglot--TextDocumentPositionParams)
-                                           :newName ,newname))
-   current-prefix-arg))
+                            (defun eglot-rename (newname)
+                              "Rename the current symbol to NEWNAME."
+                              (interactive
+                               (list (read-from-minibuffer
+                                      (format "Rename `%s' to: " (or (thing-at-point 'symbol t) "unknown symbol"))
+                                      (thing-at-point 'symbol t) nil nil nil
+                                      (symbol-name (symbol-at-point)))))
+                              (unless (eglot--server-capable :renameProvider)
+                                (eglot--error "Server can't rename!"))
+                              (eglot--apply-workspace-edit
+                               (jsonrpc-request (eglot--current-server-or-lose)
+                                                :textDocument/rename `(,@(eglot--TextDocumentPositionParams)
+                                                                       :newName ,newname))
+                               current-prefix-arg))
 
 
-))
+                            ))
 
 ;; ----------------- user packages config ----------------------
 
 (use-package! evil-matchit
-    :config
-    (global-evil-matchit-mode 1))
+  :config
+  (global-evil-matchit-mode 1))
 
 (use-package! easy-hugo
-   :config
-(progn
-        (setq easy-hugo-basedir "~/repo/blog/ttys3.dev")
-        (setq easy-hugo-url "https://ttys3.dev")
-        (setq easy-hugo-previewtime "300")
-        (map! :leader
-              :desc "easy Hugo blog"
-              :nv "e h" #'easy-hugo)
-     ))
+  :config
+  (progn
+    (setq easy-hugo-basedir "~/repo/blog/ttys3.dev")
+    (setq easy-hugo-url "https://ttys3.dev")
+    (setq easy-hugo-previewtime "300")
+    (map! :leader
+          :desc "easy Hugo blog"
+          :nv "e h" #'easy-hugo)
+    ))
 
 (use-package! org-superstar
   :init
