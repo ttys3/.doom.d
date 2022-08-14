@@ -29,6 +29,24 @@
 ;; xterm mouse support
 (xterm-mouse-mode t)
 
+
+;; credit: yorickvP on Github
+;; https://www.emacswiki.org/emacs/CopyAndPaste
+(setq wl-copy-process nil)
+(defun wl-copy (text)
+(setq wl-copy-process (make-process :name "wl-copy"
+                                    :buffer nil
+                                    :command '("wl-copy" "-f" "-n")
+                                    :connection-type 'pipe))
+(process-send-string wl-copy-process text)
+(process-send-eof wl-copy-process))
+(defun wl-paste ()
+(if (and wl-copy-process (process-live-p wl-copy-process))
+    nil ; should return nil if we're the current paste owner
+    (shell-command-to-string "wl-paste -n | tr -d \r")))
+(setq interprogram-cut-function 'wl-copy)
+(setq interprogram-paste-function 'wl-paste)
+
 ;; func for calc first monitor width
 ;; geometry: position of the top-left corner of the monitor’s screen and its size, in pixels, as `(x y width height)`
 ;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Multiple-Terminals.html#index-display_002dmonitor_002dattributes_002dlist
