@@ -100,14 +100,14 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; font size for GUI emacs, here the size 16 is equal to font size 12.0 under Linux
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'normal)
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 16 :weight 'normal)
       doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 15))
 
 ;; font size for GUI emacs on HiDPI screen
 ;; display-pixel-width can not handle multi monitor correctly
 (if (and (display-graphic-p) (>= (my/first-monitor-width) 3840))
-    (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 28 :weight 'normal)
-          doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 28)))
+    (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 14 :weight 'normal)
+          doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :size 14)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
