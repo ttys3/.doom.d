@@ -68,11 +68,6 @@
 ;; (package! nerd-icons :recipe (:repo "twlz0ne/nerd-icons.el"))
 (package! icons-in-terminal :recipe (:repo "seagle0128/icons-in-terminal.el"))
 
-;; https://github.com/ubolonton/emacs-tree-sitter
-(package! tree-sitter)
-;; https://github.com/ubolonton/tree-sitter-langs
-(package! tree-sitter-langs)
-
 ;; (package! sidebar
 ;;  :recipe (:host github :repo "sebastiencs/sidebar.el"))
 
@@ -80,9 +75,6 @@
 ;; For example, in HTML “<div>” and “</div>” are a pair of tags.
 ;; https://github.com/redguardtoo/evil-matchit
 (package! evil-matchit)
-
-;; https://github.com/masasam/emacs-easy-hugo
-(package! easy-hugo)
 
 (package! benchmark-init)
 
