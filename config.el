@@ -261,14 +261,8 @@
 ;; recover max face count limit to 9 by doom emacs in core/core-ui.el
 ;; and also add rainbow delimiters for all langs (doom only enabled it in few langs)
 ;; https://github.com/Fanael/rainbow-delimiters
-(use-package! rainbow-delimiters
-  :config
-  (progn
-    (defun @-enable-rainbow-delimiters ()
-      (rainbow-delimiters-mode t))
-    (setq rainbow-delimiters-max-face-count 9)
-    (add-hook 'prog-mode-hook '@-enable-rainbow-delimiters)))
-
+(after! rainbow-delimiters
+    (setq rainbow-delimiters-max-face-count 9))
 ;; enable responsive guides
 ;; responsive guides allow you to visualize not only the indentation itself, but your place in it.
 ;; see https://github.com/DarthFennec/highlight-indent-guides/blob/master/README.md#responsive-guides
